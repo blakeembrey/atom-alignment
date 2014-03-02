@@ -1,0 +1,20 @@
+{
+  "name": "alignment",
+  "main": "./lib/atom-alignment",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Quickly align selections with a single shortcut",
+  "author": {
+    "name": "Blake Embrey",
+    "email": "hello@blakeembrey.com",
+    "url": "http://blakeembrey.me"
+  },
+  "repository": "https://github.com/blakeembrey/atom-alignment",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "escape-regexp": "0.0.1"
+  }
+}
