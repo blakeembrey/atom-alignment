@@ -1,7 +1,7 @@
 {
   "name": "alignment",
   "main": "./lib/atom-alignment",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Quickly align selections with a single shortcut",
   "author": {
