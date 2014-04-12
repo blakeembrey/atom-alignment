@@ -1,7 +1,7 @@
 escape = require('escape-regexp')
 
-length = (string) ->
-  string.length
+sortLength = (a, b) ->
+  b.length - a.length
 
 alignment = module.exports = (text) ->
   leftSeparators  = atom.config.get('alignment.leftSeparators')
@@ -9,8 +9,13 @@ alignment = module.exports = (text) ->
   separators      = leftSeparators.concat(rightSeparators)
   spaceSeparators = atom.config.get('alignment.spaceSeparators')
   separatorRegExp = new RegExp(
-    '^(?:"(?:\\\\"|.(?:\\\\\\\\)*)*"|\'(?:\\\\\'|.(?:\\\\\\\\)*)*\'|.)*?' +
-    '(' + separators.map(escape).sort(length).join('|') + ')'
+    '^(?:' + [
+      '\\\\[\'"]',
+      '[^\\\\][^\'"]',
+      '"(?:\\\\\\\\|\\\\"|[^\\\\][^"])*"',
+      '\'(?:\\\\\\\\|\\\\\'|[^\\\\][^\'])*\''
+    ].join('|') + ')*?' +
+    '(' + separators.sort(sortLength).map(escape).join('|') + ')'
   )
 
   alignText = (text) ->
