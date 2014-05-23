@@ -10,10 +10,9 @@ alignment = module.exports = (text) ->
   spaceSeparators = atom.config.get('alignment.spaceSeparators')
   separatorRegExp = new RegExp(
     '^(?:' + [
-      '\\\\[\'"]',
-      '[^\\\\][^\'"]',
-      '"(?:\\\\\\\\|\\\\"|[^\\\\][^"])*"',
-      '\'(?:\\\\\\\\|\\\\\'|[^\\\\][^\'])*\''
+      '"(?:\\\\\\\\|\\\\"|.)*"',
+      '\'(?:\\\\\\\\|\\\\\'|.)*\'',
+      '.'
     ].join('|') + ')*?' +
     '(' + separators.sort(sortLength).map(escape).join('|') + ')'
   )

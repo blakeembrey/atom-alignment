@@ -1,9 +1,10 @@
-alignment = require '../lib/alignment'
+alignment = require('../lib/alignment')
 
 describe 'alignment', ->
   beforeEach ->
-    waitsForPromise ->
-      atom.packages.activatePackage('alignment')
+    atom.config.set('alignment.leftSeparators',  [':'])
+    atom.config.set('alignment.rightSeparators', ['=', '+=', '-=', '/='])
+    atom.config.set('alignment.spaceSeparators', ['=', '+=', '-=', '/='])
 
   it 'should align text with equal signs', ->
     result = alignment("""
@@ -17,6 +18,19 @@ describe 'alignment', ->
     """)
 
     expect(result[1]).toEqual([[0, 8], [1, 8]])
+
+  it 'should align PHP-style variables', ->
+    result = alignment("""
+      $a = 1;
+      $bg = 2;
+    """)
+
+    expect(result[0]).toEqual("""
+      $a  = 1;
+      $bg = 2;
+    """)
+
+    expect(result[1]).toEqual([[0, 4], [1, 4]])
 
   it 'should align text with colons', ->
     result = alignment("""
@@ -78,16 +92,16 @@ describe 'alignment', ->
 
   it 'should ignore escaped quotes', ->
     result = alignment("""
-      "test\" escape": more
-      'yet another \' escape' = more
+      "test\\" escape": more
+      'yet another \\' escape' = more
     """)
 
     expect(result[0]).toEqual("""
-      "test\" escape":          more
-      'yet another \' escape' = more
+      "test\\" escape":          more
+      'yet another \\' escape' = more
     """)
 
-    expect(result[1]).toEqual([[0, 14], [1, 23]])
+    expect(result[1]).toEqual([[0, 15], [1, 24]])
 
   it 'should properly align multiple separators', ->
     result = alignment("""
