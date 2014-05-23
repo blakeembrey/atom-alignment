@@ -132,3 +132,29 @@ describe 'alignment', ->
     """)
 
     expect(result[1]).toEqual([[0, 10], [2, 11]])
+
+  it 'should ignore escaped opening quotes', ->
+    result = alignment("""
+      test\\"something=":else"
+      something = simple
+    """)
+
+    expect(result[0]).toEqual("""
+      test\\"something = ":else"
+      something       = simple
+    """)
+
+    expect(result[1]).toEqual([[0, 16], [1, 16]])
+
+  it 'should catch escaped escape characters', ->
+    result = alignment("""
+      "test\\\\" :escape":more
+      'yet another \\' escape' = more
+    """)
+
+    expect(result[0]).toEqual("""
+      "test\\\\":                 escape":more
+      'yet another \\' escape' = more
+    """)
+
+    expect(result[1]).toEqual([[0, 8], [1, 24]])
