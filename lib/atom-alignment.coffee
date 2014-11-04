@@ -9,6 +9,8 @@ plugin = module.exports =
       ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
     spaceSeparators:
       ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+    ignoreSeparators:
+      ['::']
 
   activate: (state) ->
     atom.workspaceView.command('alignment', '.editor', ->

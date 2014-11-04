@@ -4,11 +4,12 @@ sortLength = (a, b) ->
   b.length - a.length
 
 alignment = module.exports = (text) ->
-  leftSeparators  = atom.config.get('alignment.leftSeparators')
-  rightSeparators = atom.config.get('alignment.rightSeparators')
-  separators      = leftSeparators.concat(rightSeparators)
-  spaceSeparators = atom.config.get('alignment.spaceSeparators')
-  separatorRegExp = new RegExp(
+  leftSeparators   = atom.config.get('alignment.leftSeparators')
+  rightSeparators  = atom.config.get('alignment.rightSeparators')
+  ignoreSeparators = atom.config.get('alignment.ignoreSeparators')
+  separators       = leftSeparators.concat(rightSeparators).concat(ignoreSeparators)
+  spaceSeparators  = atom.config.get('alignment.spaceSeparators')
+  separatorRegExp  = new RegExp(
     '^(?:' + [
       '\\\\.',
       '"(?:\\\\.|[^"])*?"',
@@ -22,19 +23,28 @@ alignment = module.exports = (text) ->
     lines   = text.split('\n')
     matches = 0
 
-    # Split each line into the left context, separator and right content.
-    parts = lines.map((line, index) ->
-      match = line.match(separatorRegExp)
+    findSeparator = (line, startIndex) ->
+      match      = line.substr(startIndex).match(separatorRegExp)
+      startIndex = startIndex or 0
 
+      # Ignore certain matches.
       return if !match
+
+      # If the match is an ignore separator, move forward in the line.
+      if match[1] in ignoreSeparators
+        return findSeparator(line, match[0].length)
 
       matches += 1
 
       [
-        match[0].substr(0, match[0].length - match[1].length).trimRight(),
+        line.substr(0, startIndex + match[0].length - match[1].length).trimRight(),
         match[1],
-        line.substr(match[0].length).trimLeft()
+        line.substr(startIndex + match[0].length).trimLeft()
       ]
+
+    # Split each line into the left context, separator and right content.
+    parts = lines.map((line) ->
+      findSeparator(line)
     )
 
     # Return early if there weren't enough matches to align.

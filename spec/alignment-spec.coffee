@@ -2,9 +2,10 @@ alignment = require('../lib/alignment')
 
 describe 'alignment', ->
   beforeEach ->
-    atom.config.set('alignment.leftSeparators',  [':'])
-    atom.config.set('alignment.rightSeparators', ['=', '+=', '-=', '/='])
-    atom.config.set('alignment.spaceSeparators', ['=', '+=', '-=', '/='])
+    atom.config.set('alignment.leftSeparators',   [':'])
+    atom.config.set('alignment.rightSeparators',  ['=', '+=', '-=', '/=', '=>'])
+    atom.config.set('alignment.spaceSeparators',  ['=', '+=', '-=', '/=', '=>'])
+    atom.config.set('alignment.ignoreSeparators', ['::'])
 
   it 'should align text with equal signs', ->
     result = alignment("""
@@ -158,3 +159,14 @@ describe 'alignment', ->
     """)
 
     expect(result[1]).toEqual([[0, 8], [1, 24]])
+
+  it 'should ignore double colons', ->
+    result = alignment("""
+      App::NAME_KEY => 'text',
+      App::FORMAT_KEY => '123'
+    """)
+
+    expect(result[0]).toEqual("""
+      App::NAME_KEY   => 'text',
+      App::FORMAT_KEY => '123'
+    """)

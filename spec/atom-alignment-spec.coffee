@@ -5,9 +5,10 @@ describe 'atom alignment', ->
     editor = atom.project.openSync()
     buffer = editor.getBuffer()
 
-    atom.config.set('alignment.leftSeparators',  [':'])
-    atom.config.set('alignment.rightSeparators', ['='])
-    atom.config.set('alignment.spaceSeparators', ['='])
+    atom.config.set('alignment.leftSeparators',   [':'])
+    atom.config.set('alignment.rightSeparators',  ['='])
+    atom.config.set('alignment.spaceSeparators',  ['='])
+    atom.config.set('alignment.ignoreSeparators', ['::'])
 
     editor.setText """
       test= something
