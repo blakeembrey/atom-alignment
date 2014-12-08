@@ -35,8 +35,8 @@ plugin = module.exports =
       text        = editor.getTextInBufferRange(range)
       align       = alignment(text)
 
-      selection.cursor.destroy()
       editor.setTextInBufferRange(range, align[0])
+      selection.destroy()
 
       align[1].forEach((position) ->
         editor.addCursorAtBufferPosition([startRow + position[0], position[1]])
