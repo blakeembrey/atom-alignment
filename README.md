@@ -13,7 +13,7 @@ apm install alignment
 
 ## Usage
 
-Make a selection of the lines to you want to align and press `cmd-ctrl-alt-]`. It will transform something like:
+Make a selection of the lines to you want to align and press `cmd-ctrl-alt-]`/`cmd-ctrl-a` (or `ctrl-alt-]`/`ctrl-alt-a` on Windows and Linux). It will transform something like:
 
 ```js
 var test = 'string';
