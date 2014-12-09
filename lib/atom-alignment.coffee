@@ -14,17 +14,16 @@ plugin = module.exports =
 
   activate: (state) ->
     atom.workspaceView.command('alignment', '.editor', ->
-      plugin.align(atom.workspace.getActiveEditor())
+      plugin.align(atom.workspace.getActiveTextEditor())
     )
 
   align: (editor) ->
-    editor.getSelections()
-      .forEach((selection) ->
-        plugin.alignSelection(editor, selection)
-      )
+    editor.getSelections().forEach((selection) ->
+      plugin.alignSelection(editor, selection)
+    )
 
   alignSelection: (editor, selection) ->
-    editor.transact(=>
+    editor.transact(->
       selectionRange = selection.getBufferRange()
 
       startRow    = selectionRange.start.row
@@ -35,10 +34,14 @@ plugin = module.exports =
       text        = editor.getTextInBufferRange(range)
       align       = alignment(text)
 
+      return if !align[1].length
+
+      selection.clear()
       editor.setTextInBufferRange(range, align[0])
-      selection.destroy()
 
       align[1].forEach((position) ->
         editor.addCursorAtBufferPosition([startRow + position[0], position[1]])
       )
+
+      selection.destroy()
     )
