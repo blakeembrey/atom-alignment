@@ -11,6 +11,6 @@
   'cmd-ctrl-a': 'alignment'
   'cmd-ctrl-alt-]': 'alignment'
 
-'.platform-win32 .editor':
+'.platform-win32, .platform-linux .editor':
   'ctrl-alt-a': 'alignment'
   'ctrl-alt-]': 'alignment'
