@@ -3,20 +3,31 @@ escape = require('escape-regexp')
 sortLength = (a, b) ->
   b.length - a.length
 
+isEmpty = (x) -> x
+
 alignment = module.exports = (text) ->
   leftSeparators   = atom.config.get('alignment.leftSeparators')
   rightSeparators  = atom.config.get('alignment.rightSeparators')
   ignoreSeparators = atom.config.get('alignment.ignoreSeparators')
-  separators       = leftSeparators.concat(rightSeparators).concat(ignoreSeparators)
   spaceSeparators  = atom.config.get('alignment.spaceSeparators')
-  separatorRegExp  = new RegExp(
+
+  separators = leftSeparators
+    .concat(rightSeparators)
+    .concat(ignoreSeparators)
+    .filter(isEmpty)
+    .sort(sortLength)
+    .map(escape)
+
+  return if !separators.length
+
+  separatorRegExp = new RegExp(
     '^(?:' + [
       '\\\\.',
       '"(?:\\\\.|[^"])*?"',
       '\'(?:\\\\.|[^\'])*?\'',
       '[^\'"]'
     ].join('|') + ')*?' +
-    '(' + separators.sort(sortLength).map(escape).join('|') + ')'
+    '(' + separators.join('|') + ')'
   )
 
   alignText = (text) ->
@@ -24,8 +35,8 @@ alignment = module.exports = (text) ->
     matches = 0
 
     findSeparator = (line, startIndex) ->
-      match      = line.substr(startIndex).match(separatorRegExp)
       startIndex = startIndex or 0
+      match      = line.substr(startIndex).match(separatorRegExp)
 
       # Ignore certain matches.
       return if !match
