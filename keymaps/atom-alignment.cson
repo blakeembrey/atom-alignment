@@ -7,10 +7,10 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.platform-darwin .editor':
+'.platform-darwin atom-text-editor':
   'cmd-ctrl-a': 'alignment'
   'cmd-ctrl-alt-]': 'alignment'
 
-'.platform-win32, .platform-linux .editor':
+'.platform-win32, .platform-linux atom-text-editor':
   'ctrl-alt-a': 'alignment'
   'ctrl-alt-]': 'alignment'
