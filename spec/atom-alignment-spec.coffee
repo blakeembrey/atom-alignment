@@ -1,4 +1,4 @@
-{align} = require '../lib/atom-alignment'
+{align} = require('../lib/atom-alignment')
 
 describe 'atom alignment', ->
   it 'should align correctly', ->
@@ -10,10 +10,10 @@ describe 'atom alignment', ->
     atom.config.set('alignment.spaceSeparators',  ['='])
     atom.config.set('alignment.ignoreSeparators', ['::'])
 
-    editor.setText """
+    editor.setText("""
       test= something
       another   : test
-    """
+    """)
     editor.setSelectedBufferRange([[0, 0], [1, 5]])
 
     align(editor)
