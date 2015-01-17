@@ -12,9 +12,9 @@ plugin = module.exports =
     ignoreSeparators:
       ['::']
 
-  activate: (state) ->
-    atom.workspaceView.command('alignment', '.editor', ->
-      plugin.align(atom.workspace.getActiveTextEditor())
+  activate: () ->
+    atom.commands.add('atom-workspace', 'alignment', ->
+      plugin.align(atom.workspace.getActiveEditor())
     )
 
   align: (editor) ->
