@@ -18,6 +18,8 @@ plugin = module.exports =
     )
 
   align: (editor) ->
+    return if not editor
+
     editor.getSelections().forEach((selection) ->
       plugin.alignSelection(editor, selection)
     )
