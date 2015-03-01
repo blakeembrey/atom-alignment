@@ -1,4 +1,4 @@
-# Alignment
+# Atom Alignment
 
 [![Build status][travis-image]][travis-url]
 
