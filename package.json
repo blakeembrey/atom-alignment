@@ -1,7 +1,7 @@
 {
   "name": "alignment",
   "main": "./lib/main",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "private": true,
   "description": "Quickly align selections with a single shortcut",
   "author": {
