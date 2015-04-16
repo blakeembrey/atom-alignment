@@ -13,7 +13,7 @@ plugin = module.exports =
       ['::']
 
   activate: () ->
-    atom.commands.add('atom-workspace', 'alignment', ->
+    atom.commands.add('atom-text-editor', 'alignment', ->
       plugin.align(atom.workspace.getActiveTextEditor())
     )
 
