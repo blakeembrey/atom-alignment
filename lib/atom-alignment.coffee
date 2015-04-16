@@ -2,15 +2,27 @@ alignment           = require('./alignment')
 {Range, TextBuffer} = require('atom')
 
 plugin = module.exports =
-  configDefaults:
+  config:
     leftSeparators:
-      [':']
+      type: 'array'
+      default: [':']
+      items:
+        type: 'string'
     rightSeparators:
-      ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      type: 'array'
+      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      items:
+        type: 'string'
     spaceSeparators:
-      ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      type: 'array'
+      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      items:
+        type: 'string'
     ignoreSeparators:
-      ['::']
+      type: 'array'
+      default: ['::']
+      items:
+        type: 'string'
 
   activate: () ->
     atom.commands.add('atom-text-editor', 'alignment', ->
