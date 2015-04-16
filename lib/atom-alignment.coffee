@@ -14,7 +14,7 @@ plugin = module.exports =
 
   activate: () ->
     atom.commands.add('atom-workspace', 'alignment', ->
-      plugin.align(atom.workspace.getActiveEditor())
+      plugin.align(atom.workspace.getActiveTextEditor())
     )
 
   align: (editor) ->
@@ -31,7 +31,7 @@ plugin = module.exports =
       startRow    = selectionRange.start.row
       startColumn = 0
       endRow      = selectionRange.end.row
-      endColumn   = editor.lineLengthForBufferRow(selectionRange.end.row)
+      endColumn   = editor.lineTextForBufferRow(selectionRange.end.row).length
       range       = new Range([startRow, startColumn], [endRow, endColumn])
       text        = editor.getTextInBufferRange(range)
       align       = alignment(text)
