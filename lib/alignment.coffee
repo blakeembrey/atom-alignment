@@ -41,16 +41,18 @@ alignment = module.exports = (text) ->
       # Ignore certain matches.
       return if !match
 
+      length = match[0].length
+
       # If the match is an ignore separator, move forward in the line.
       if match[1] in ignoreSeparators
-        return findSeparator(line, match[0].length)
+        return findSeparator(line, length)
 
       matches += 1
 
       [
-        line.substr(0, startIndex + match[0].length - match[1].length).trimRight(),
+        line.substr(0, startIndex + length - match[1].length).trimRight(),
         match[1],
-        line.substr(startIndex + match[0].length).trimLeft()
+        line.substr(startIndex + length).trimLeft()
       ]
 
     # Split each line into the left context, separator and right content.

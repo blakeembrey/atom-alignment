@@ -19,7 +19,15 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "scripts": {
+    "lint": "coffeelint .",
+    "test": "npm run lint && apm test"
+  },
   "dependencies": {
     "escape-regexp": "0.0.1"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.9.3",
+    "pre-commit": "^1.0.6"
   }
 }
