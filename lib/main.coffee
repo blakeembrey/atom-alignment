@@ -1,4 +1,4 @@
-alignment           = require('./alignment')
+alignment = require('./alignment')
 {Range, TextBuffer} = require('atom')
 
 plugin = module.exports =

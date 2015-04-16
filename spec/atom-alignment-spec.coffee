@@ -1,4 +1,4 @@
-{align} = require('../lib/atom-alignment')
+{align} = require('../')
 
 describe 'atom alignment', ->
   it 'should align correctly', ->
