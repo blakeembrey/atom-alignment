@@ -10,12 +10,12 @@ plugin = module.exports =
         type: 'string'
     rightSeparators:
       type: 'array'
-      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>', '&']
       items:
         type: 'string'
     spaceSeparators:
       type: 'array'
-      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>']
+      default: ['=', '+=', '-=', '*=', '/=', '?=', '|=', '%=', '.=', '=>', '&']
       items:
         type: 'string'
     ignoreSeparators:
