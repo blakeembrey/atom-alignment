@@ -10,7 +10,15 @@ alignment = module.exports = (text) ->
   rightSeparators  = atom.config.get('alignment.rightSeparators')
   ignoreSeparators = atom.config.get('alignment.ignoreSeparators')
   spaceSeparators  = atom.config.get('alignment.spaceSeparators')
-
+  
+  editor = atom.workspace.getActiveTextEditor()
+  scopes = editor.getRootScopeDescriptor().scopes[0]
+  if scopes == "text.tex.latex"
+    leftSeparators   = leftSeparators.concat    []
+    rightSeparators  = rightSeparators.concat   ['&']
+    ignoreSeparators = ignoreSeparators.concat  []
+    spaceSeparators  = spaceSeparators.concat   ['&']
+  
   separators = leftSeparators
     .concat(rightSeparators)
     .concat(ignoreSeparators)
