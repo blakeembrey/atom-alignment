@@ -25,22 +25,22 @@ plugin = module.exports =
         type: 'string'
     cLeftSeperators:
       title: 'Custom left seperators for scopes'
-      description: 'example: {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
       type: 'string'
       default: "{}"
     cRightSeperators:
       title: 'Custom right seperators for scopes'
-      description: 'example: {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
       type: 'string'
       default: "{}"
     cSpaceSeperators:
       title: 'Custom space seperators for scopes'
-      description: 'example: {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
       type: 'string'
       default: "{}"
     cIgnoreSeperators:
       title: 'Custom ignore seperators for scopes'
-      description: 'example: {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
       type: 'string'
       default: "{}"
 
