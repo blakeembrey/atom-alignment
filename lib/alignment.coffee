@@ -10,10 +10,10 @@ alignment = module.exports = (text) ->
   rightSeparators  = atom.config.get('alignment.rightSeparators')
   ignoreSeparators = atom.config.get('alignment.ignoreSeparators')
   spaceSeparators  = atom.config.get('alignment.spaceSeparators')
-  customLeft       = JSON.parse atom.config.get('alignment.customLeftSeperatorsForScope')
-  customRight      = JSON.parse atom.config.get('alignment.customRightSeperatorsForScope')
-  customSpace      = JSON.parse atom.config.get('alignment.customSpaceSeperatorsForScope')
-  customIgnore     = JSON.parse atom.config.get('alignment.customIgnoreSeperatorsForScope')
+  customLeft       = JSON.parse atom.config.get('alignment.cLeftSeperators')
+  customRight      = JSON.parse atom.config.get('alignment.cRightSeperators')
+  customSpace      = JSON.parse atom.config.get('alignment.cSpaceSeperators')
+  customIgnore     = JSON.parse atom.config.get('alignment.cIgnoreSeperators')
 
   editor = atom.workspace.getActiveTextEditor()
   scope = editor.getRootScopeDescriptor().scopes[0]
