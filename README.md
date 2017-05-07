@@ -1,6 +1,7 @@
 # Atom Alignment
 
 [![Build status][travis-image]][travis-url]
+[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/atom-alignment.svg)](https://greenkeeper.io/)
 
 Quick alignment of multi-line selections and multiple selections for [Atom](https://atom.io/packages/alignment).
 
