@@ -23,6 +23,26 @@ plugin = module.exports =
       default: ['::']
       items:
         type: 'string'
+    cLeftSeperators:
+      title: 'Custom left seperators for scopes'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      type: 'string'
+      default: "{}"
+    cRightSeperators:
+      title: 'Custom right seperators for scopes'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      type: 'string'
+      default: "{}"
+    cSpaceSeperators:
+      title: 'Custom space seperators for scopes'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      type: 'string'
+      default: "{}"
+    cIgnoreSeperators:
+      title: 'Custom ignore seperators for scopes'
+      description: 'e.g. {"text.tex.latex": ["&"], "source.coffee": ["!","#"]}'
+      type: 'string'
+      default: "{}"
 
   activate: () ->
     atom.commands.add('atom-text-editor', 'alignment', ->
